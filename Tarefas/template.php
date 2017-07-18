@@ -11,7 +11,7 @@
 			<legend>Nova tarefa</legend>
 			<div class="form-group">
 				<label for="nome"> Tarefa: </label>
-				<input type="text" name="nome" id="nome" class="form-control" placeholder="Tarefa"/>
+				<input type="text" name="nome" id="nome" class="form-control" placeholder="Tarefa" required="required"/>
 			</div>
 			<div class="form-group">
 				<label for="descricao"> Descrição (opcional): </label>
@@ -21,7 +21,7 @@
 				<label for="prazo"> Prazo (Opcional): </label>
 				<input type="text" name="prazo" id="prazo" class="form-control" placeholder="Prazo"/>
 			</div>
-			<div class="form=group">
+			<div class="form=group"><br>
 				<h4>Prioridade</h4>
 				<label class="radio-inline">
 					<input type="radio" name="prioridade" value="1" checked />Baixa
@@ -32,11 +32,11 @@
 				<label class="radio-inline">
 					<input type="radio" name="prioridade" value="3" checked />Alta
 				</label>
-			</div>
+			</div><br>
 			<label>
 				Tarefa concluída:
-				<input type="checkbox" name="concluida" value="sim" />
-			</label><br>
+				<input type="checkbox" name="concluida" value="1" />
+			</label><br><br>
 			<input type="submit" value="Cadastrar" class="btn btn-primary" />
 	</form>
 	<table class="table">
@@ -52,9 +52,9 @@
             <tr>
                 <td><?php echo isset($tarefa['nome']) ?  $tarefa['nome'] : ''; ?> </td>
                 <td><?php echo isset($tarefa['descricao']) ?  $tarefa['descricao'] : ''; ?> </td>
-                <td><?php echo isset($tarefa['prazo']) ? $tarefa['prazo'] : ''; ?></td>
+                <td><?php echo traduz_data_para_exibir(($tarefa['prazo'])) ? traduz_data_para_exibir(($tarefa['prazo'])) : ''; ?></td>
                 <td><?php echo traduz_prioridade($tarefa['prioridade']) ? traduz_prioridade($tarefa['prioridade']) : ''; ?></td>
-                <td><?php echo isset($tarefa['concluida']) ? $tarefa['concluida'] : ''; ?></td>
+                <td><?php echo traduz_concluida($tarefa['concluida']) ? traduz_concluida($tarefa['concluida']) : ''; ?></td>
             </tr>
             <?php endforeach; ?>
             <?php endif; ?>
