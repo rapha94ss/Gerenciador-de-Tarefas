@@ -2,6 +2,9 @@
 session_start();
 include "banco.php";
 include "functions.php";
+
+$exibir_tabela = true;
+
 //verifica se campo nome está preenchido
 if (isset($_GET['nome']) && $_GET['nome'] != '') {
 	$tarefa = array();
@@ -39,5 +42,12 @@ gravar_tarefa($conexao, $tarefa); //grava dados no banco de dados
 }
 
 $lista_tarefas = buscar_tarefas($conexao); //preenche a tabela com as tarefas cadastradas
-
+$tarefa = array(
+'id' => 0,
+'nome' => '',
+'descricao' => '',
+'prazo' => '',
+'prioridade' => 1,
+'concluida' => ''
+);
 include "template.php";
